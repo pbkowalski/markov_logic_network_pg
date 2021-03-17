@@ -1,0 +1,18 @@
+Fishing(vessel)
+Cargo(vessel)
+Other(vessel)
+hasDestination(vessel, location!)
+//hasType(vessel, type!)
+//type = {Fishing, Cargo, Other}
+location = {Italy, Turkey, OtherD}
+//1.123 Fishing(x) => hasDestination(x, Italy)
+//2.32 Fishing(Marcel) v hasDestination(Marcel, Italy)
+//2.74 Cargo(Marcel) v hasDestination(Marcel, Turkey)
+//2.74 Fishing(Marcel) v hasDestination(Marcel, Turkey)
+1.3863 Fishing(Marcel) v hasDestination(Marcel, Italy)
+1.7346 Cargo(Marcel) v hasDestination(Marcel, Turkey)
+1.7346 Fishing(Marcel) v hasDestination(Marcel, Turkey)
+Cargo(x) => !Fishing(x) ^ !Other(x).
+Fishing(x) => !Cargo(x) ^ !Other(x).
+Other(x) => !Fishing(x) ^ !Cargo(x).
+//10 hasDestination(x, Turkey) <=> !hasDestination(x,Italy)
